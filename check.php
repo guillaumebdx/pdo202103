@@ -1,4 +1,5 @@
 <?php
+require 'model.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die('Forbidden');
@@ -19,8 +20,8 @@ if (!isset($_POST['ingredients'])) {
 }
 
 if (empty($errors)) {
-    //persist DB
-    header('Location: success.php');
+    $id = createRecipe($_POST);
+    header('Location: index.php?id=' . $id);
 } else {
     header('Location: index.php?' . http_build_query($errors) . '&' . http_build_query($_POST));
 }

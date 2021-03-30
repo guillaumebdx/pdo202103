@@ -1,3 +1,6 @@
+<?php
+require 'model.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -43,5 +46,19 @@
     </div>
     <button>OK</button>
 </form>
+<div>
+    <ul>
+        <?php
+        $recipes = findAllRecipe('DESC');
+        ?>
+        <?php foreach ($recipes as $recipeData) : ?>
+            <li>
+                id : <?= $recipeData['id'] ?><br>
+                title : <?= $recipeData['title'] ?><br>
+                type : <?= $recipeData['type'] ?><br>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
 </body>
 </html>
